@@ -1,12 +1,11 @@
-import Link from 'next/link';
 import CreateNode from './CreateNode';
 // import styles from './Notes.module.css';
 
 type NoteType = {
   id: string;
-  title: string;
-  content: string;
-  created: string;
+  Task: string;
+  Done: string;
+  Due_Date: string;
 };
 
 async function getNotes(): Promise<NoteType[]> {
@@ -19,30 +18,42 @@ export default async function NotesPage() {
   const notes = await getNotes();
 
   return(
-    <div className='bg-white'>
-      <h1></h1>
-      <div>
-        {notes?.map((note) => (
-          <Note key={note.id} note={note} />
-        ))}
+    <div className='bg-gray-800 h-screen font-press-start'>
+      <div className='bg-black m-3 mt-10 p-2 border-4 outline-doubl rounded-md w-5/6'>
+      
+        <h1 className='text-white text-4xl pb-3'>Dailies</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Done</th>
+              <th>Due Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {notes?.map((note) => (
+              <Note key={note.id} note={note} />
+            ))}
+          </tbody>
+        </table>
+        
+
+        <CreateNode />
+
       </div>
 
-      <CreateNode />
     </div>
   );
 }
 
 function Note({ note }: { note: NoteType }) {
-  const { id, title, content, created } = note;
+  const { Task, Done, Due_Date} = note;
 
   return (
-    <Link href={`/notes/${id}`}>
-      <div>
-        <h2>{title}</h2>
-        <h5>{content}</h5>
-        <p>{created}</p>
-      </div>
-      <br />
-    </Link>
+    <tr className='text-white'>
+      <td>{Task}</td>
+      <td>{Done}</td>
+      <td>{Due_Date}</td>
+    </tr>
   );
 }

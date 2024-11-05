@@ -6,6 +6,7 @@ import { useState } from 'react';
 export default function CreateNote() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    // const [visible, setVisible] = useState(false);
 
     const router = useRouter();
 
@@ -26,12 +27,11 @@ export default function CreateNote() {
         setTitle('');
         setContent('');
 
-        router.reload();
+        router.refresh();
     }
 
     return (
         <form onSubmit={create}>
-            <h3>Create a new Note</h3>
             <input 
                 type="text" 
                 placeholder="Title" 

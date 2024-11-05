@@ -9,7 +9,12 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'press-start': ['"Press Start 2P"', 'cursive'],
+        'work-sans': ['"Work Sans"', 'sans-serif'],
+      }
+    },
   },
   plugins: [
     // require("@tailwindcss/typography"),

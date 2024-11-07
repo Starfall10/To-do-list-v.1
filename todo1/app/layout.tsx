@@ -25,16 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white font-press-start`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased` } 
       >
-        <Link href="/">
-          Home
-        </Link>
-        <Link href="/notes">
-          Notes
-        </Link>
+        
         {children}
       </body>
     </html>

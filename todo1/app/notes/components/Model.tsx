@@ -2,10 +2,11 @@ import React from "react";
 
 interface ModelProps {
   modalOpen: boolean;
-  setModalOpen: (open:boolean) => boolean;
+  setModalOpen: (open:boolean) => boolean | void;
+  children: React.ReactNode;
 }
 
-const Model: React.FC<ModelProps> = ({ modalOpen, setModalOpen }) => {
+const Model: React.FC<ModelProps> = ({ modalOpen, setModalOpen, children}) => {
   return (
     <dialog
       id="my_modal_2"
@@ -17,8 +18,7 @@ const Model: React.FC<ModelProps> = ({ modalOpen, setModalOpen }) => {
             ✕
           </button>
         </form>
-        <h3 className="font-bold text-lg">Hello!</h3>
-        <p className="py-4">Press ESC key or click on ✕ button to close</p>
+        {children}
       </div>
     </dialog>
   );

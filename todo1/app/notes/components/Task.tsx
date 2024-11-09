@@ -1,17 +1,17 @@
-import { ITask } from '@/types/tasks'
-import React from 'react'
+import { ITask } from "@/types/tasks";
+import React from "react";
 
 interface TaskProps {
-    task: ITask
+  task: ITask;
 }
 
-const Task: React.FC<TaskProps> = ({task}) => {
+const Task: React.FC<TaskProps> = ({ task }) => {
   return (
     <tr key={task.id}>
-        <td>{task.text}</td>
-        <td>{task.id}</td>
+      <td>{task.text}</td>
+      <td>{task.id}</td>
     </tr>
-  )
-}
+  );
+};
 
-export default Task
+export default Task;

@@ -1,51 +1,51 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function CreateNote() {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    // const [visible, setVisible] = useState(false);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  // const [visible, setVisible] = useState(false);
 
-    const router = useRouter();
+  const router = useRouter();
 
-    const create = async (e: React.FormEvent) => {
-        e.preventDefault(); // Prevent the default form submission
+  const create = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent the default form submission
 
-        await fetch('http://127.0.0.1:8090/api/collections/Collection1/records', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                title,
-                content
-            })
-        });
+    await fetch("http://127.0.0.1:8090/api/collections/Collection1/records", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        content,
+      }),
+    });
 
-        setTitle('');
-        setContent('');
+    setTitle("");
+    setContent("");
 
-        router.refresh();
-    }
+    router.refresh();
+  };
 
-    return (
-        <form onSubmit={create}>
-            <input 
-                type="text" 
-                placeholder="Title" 
-                value={title} 
-                onChange={(e) => setTitle(e.target.value)} 
-                required 
-            />
-            <textarea 
-                placeholder="Content" 
-                value={content} 
-                onChange={(e) => setContent(e.target.value)} 
-                required 
-            ></textarea>
-            <button type="submit">Create Note</button>
-        </form>
-    );
+  return (
+    <form onSubmit={create}>
+      <input
+        type="text"
+        placeholder="Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        required
+      />
+      <textarea
+        placeholder="Content"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        required
+      ></textarea>
+      <button type="submit">Create Note</button>
+    </form>
+  );
 }

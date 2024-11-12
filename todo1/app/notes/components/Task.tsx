@@ -24,7 +24,6 @@ const Task: React.FC<TaskProps> = ({ task }) => {
       id: task.id,
       text: taskToEdit,
     });
-    setTaskToEdit("");
     router.refresh();
     setOpenModalEdit(false);
   };
@@ -64,7 +63,12 @@ const Task: React.FC<TaskProps> = ({ task }) => {
             </div>
           </form>
         </Model>
-        <FiTrash2 onClick={() => setOpenModalDeleted(true)} cursor="pointer" className="text-red-500" size={25} />
+        <FiTrash2
+          onClick={() => setOpenModalDeleted(true)}
+          cursor="pointer"
+          className="text-red-500"
+          size={25}
+        />
         <Model modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>
           <h3 className="text-gl">
             Are you sure, you want to delete this task?

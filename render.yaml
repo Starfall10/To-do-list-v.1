@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: pocketbase
+    env: docker
+    plan: free
+    buildCommand: ""
+    startCommand: ./start.sh
+    envVars:
+      - key: POCKETBASE_ENV
+        value: production
+    region: oregon
+    dockerfilePath: Dockerfile

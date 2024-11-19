@@ -1,4 +1,7 @@
 {
+  "comments": {
+    "json-server": "json-server --watch data/todos.json --port 3001"
+  },
   "name": "todo1",
   "version": "0.1.0",
   "private": true,
@@ -6,8 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "json-server": "json-server --watch data/todos.json --port 3001"
+    "lint": "next lint"
+    
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",

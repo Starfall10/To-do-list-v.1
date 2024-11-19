@@ -21,8 +21,8 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await editTodo({
-      id: task.id,
-      Task: taskToEdit,
+        id: task.id,
+        Task: taskToEdit, // Send the correct field name
     });
     router.refresh();
     setOpenModalEdit(false);
@@ -36,7 +36,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
 
   return (
     <tr key={task.id}>
-      <td className="w-full">{task.Task}</td>
+      <td className="w-full">{task.id}------{task.Task}</td>
       <td className="flex gap-5">
         <FiEdit
           onClick={() => {

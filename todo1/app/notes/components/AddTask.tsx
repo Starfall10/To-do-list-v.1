@@ -14,7 +14,7 @@ const AddTask = () => {
     e.preventDefault();
     await addTodo({
       id: uuidv4(), 
-      text: newTaskValue,
+      Task: newTaskValue,
     });
     setNewTaskValue("");
     router.refresh();

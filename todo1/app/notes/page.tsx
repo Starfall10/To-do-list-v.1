@@ -4,6 +4,7 @@ import ToDoList from "./components/ToDoList";
 
 export default async function NotesPage() {
   const tasks = await getAllTodos();
+  
   console.log(tasks);
 
   return (

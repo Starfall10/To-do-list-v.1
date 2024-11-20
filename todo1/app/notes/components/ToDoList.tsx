@@ -1,12 +1,17 @@
+"use client"
 import { ITask } from "@/types/tasks";
 import React from "react";
 import Task from "./Task";
 
 interface ToDoListProps {
   tasks: ITask[];
+  update: () => void;
 }
 
-const ToDoList: React.FC<ToDoListProps> = ({ tasks }) => {
+const ToDoList: React.FC<ToDoListProps> = ({ tasks, update }) => {
+  function updateTaskList() {
+    update()
+  }
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -18,7 +23,7 @@ const ToDoList: React.FC<ToDoListProps> = ({ tasks }) => {
         </thead>
         <tbody>
           {tasks.map((task) => (
-            <Task key={task.id} task={task} />
+            <Task key={task.id} task={task} update={updateTaskList}/>
           ))}
         </tbody>
       </table>

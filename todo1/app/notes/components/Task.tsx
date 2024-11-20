@@ -4,33 +4,35 @@ import { ITask } from "@/types/tasks";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import React, { FormEventHandler, useState } from "react";
 import Model from "./Model";
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 import { deleteTodo, editTodo } from "@/api";
 
 interface TaskProps {
   task: ITask;
+  update: () => void;
 }
 
-const Task: React.FC<TaskProps> = ({ task }) => {
-  const router = useRouter();
+const Task: React.FC<TaskProps> = ({ task, update }) => {
+  //const router = useRouter();
   const [openModalEdit, setOpenModalEdit] = React.useState<boolean>(false);
   const [openModalDeleted, setOpenModalDeleted] =
     React.useState<boolean>(false);
   const [taskToEdit, setTaskToEdit] = useState<string>(task.Task);
-
   const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await editTodo({
         id: task.id,
         Task: taskToEdit, // Send the correct field name
     });
-    router.refresh();
+    task.Task = taskToEdit;
+    //router.refresh();
     setOpenModalEdit(false);
   };
 
   const handleDeleteTask = async (id: string) => {
     await deleteTodo(id);
-    router.refresh();
+     
+    update();
     setOpenModalDeleted(false);
   };
 

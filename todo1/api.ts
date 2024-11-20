@@ -44,7 +44,7 @@ export const editTodo = async (todo: ITask): Promise<ITask> => {
     console.log("Payload:", { Task: todo.Task });
 
     const res = await fetch(`${baseUrl}/${todo.id}`, {
-            
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ Task: todo.Task }),
     });
@@ -70,5 +70,6 @@ export const deleteTodo = async (id: string): Promise<void> => {
     await fetch(`${baseUrl}/${id}`, {
         method: 'DELETE',
     });
+    
 
 }

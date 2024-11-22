@@ -38,7 +38,7 @@ const Task: React.FC<TaskProps> = ({ task, update }) => {
 
   return (
     <tr key={task.id}>
-      <td className="w-full">{task.id}------{task.Task}</td>
+      <td className="w-full">{task.Task}</td>
       <td className="flex gap-5">
         <FiEdit
           onClick={() => {
